@@ -1,0 +1,21 @@
+{
+  "name": "awww.ooo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Petar Slovic",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.4.6",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "moment": "^2.16.0",
+    "mongoose": "^4.6.8",
+    "simple-encryptor": "^1.1.0",
+    "sparkpost": "^2.0.1"
+  }
+}

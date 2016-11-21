@@ -1,0 +1,68 @@
+
+{{> logo}}
+
+{{> greeting-header}}
+
+{{> line }}
+
+{{> cute-img }}
+
+<div class="container tagline">
+  <div class="tagline__text tagline__text--dark">
+    Thanks for confirming your account!
+  </div>
+  
+  <div class="tagline__text tagline__text--primary">
+    Please tell us when you'd like to receive cute photos in the day.
+  </div>
+</div>
+
+<div class="container section ta-c">
+  <div class="section__control ta-c">
+    <div class="section__control__label">Time of the day when we should email you:</div>
+    <input type="time" id="clockpicker"><br>
+    <button class="button" id="save-preferences">Save</button>
+  </div>
+</div>
+
+{{> line }}
+
+{{> footer }}
+
+{{> footer-bottom }}
+
+<script>
+  $(function() {
+    var hash = '{{{ hash }}}';
+
+    $('#clockpicker').clockpicker({
+        autoclose: true,
+        donetext: 'Okay!'
+    });
+
+    $('#save-preferences').on('click', function() {
+      var localTime = $('#clockpicker').val();
+
+      if(!localTime) {
+        return;
+      }
+
+      var hours = localTime.split(':')[0];
+      var minutes = localTime.split(':')[1];
+      var utcTime = moment().hours(hours).minutes(minutes).utc().format('HH:mm');
+
+      if(!utcTime) {
+        return;
+      }
+
+      $.ajax({
+        method: 'POST',
+        url: '/user/preferences',
+        data: {
+          time: utcTime,
+          hash: hash
+        }
+      });
+    })
+  })
+</script>

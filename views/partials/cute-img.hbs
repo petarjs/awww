@@ -1,0 +1,30 @@
+<div class="container ta-c">
+  <div class="cute-img sprite"></div>
+  <div class="tooltip cute-img__text"></div>
+</div>
+
+<script>
+  $(function() {
+    var responses = ['Thank you!', 'I like clicks!', 'Yaaayyyy!', 'Hello there :3', 'You are really nice!', 'It\'s sweet of you to click me!', 'Very happy!', 'So nice!', 'Weeee!', 'I love cute animals!', 'Dogs are my favorite!', 'Cats are awesome!', 'Purrrrr :3', 'Just relaaaaxxx....', 'Take a deep breath...', 'Enjoy the moment!', 'Today is gonna be awesome!', 'Do something amazing today!', 'Be extra nice to people today :)'];
+    var cuteImgRect = $('.cute-img').get(0).getBoundingClientRect();
+    var center = {
+      x: cuteImgRect.left + Math.floor(cuteImgRect.width),
+      y: cuteImgRect.top + Math.floor(cuteImgRect.height)
+    }
+    var $cuteImgText = $('.cute-img__text');
+
+    $('.cute-img').on('click', _.throttle(onCuteImgClick, 800))
+
+    $cuteImgText.bind('webkitAnimationEnd', function(){
+      this.style.webkitAnimationName = '';
+    });
+
+    function onCuteImgClick() {
+      var response = responses[Math.floor(Math.random() * responses.length)];
+      $cuteImgText.css({
+        left: (center.x + Math.random() * cuteImgRect.width / 2) + 'px',
+        top: (center.y - Math.random() * cuteImgRect.height) + 'px',
+      }).text(response).css('webkitAnimationName', 'fadeInOutUp');
+    }
+  });
+</script>

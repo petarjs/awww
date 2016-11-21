@@ -1,0 +1,89 @@
+
+{{> logo}}
+
+{{> greeting-header}}
+
+{{> line }}
+
+{{> cute-img }}
+
+<div class="container tagline">
+  <div class="tagline__text tagline__text--dark">
+    Would you like to get
+  </div>
+
+  <div class="tagline__text tagline__text--primary">
+    <a href="#">cute animal photos</a>
+  </div>
+
+  <div class="tagline__text tagline__text--dark">
+    in your inbox
+  </div>
+
+  <div class="tagline__text tagline__text--primary">
+    <a href="#">every day?</a>
+  </div>
+</div>
+
+{{> line }}
+
+<div class="container subscribe">
+  <div class="subscribe__header">
+    <h3 class="subscribe__header__title">Subscribe Now!</h3>
+    <p class="subscribe__header__tagline">It's <span class="fw-b">100%</span> free.</p>
+    <p class="subscribe__header__tagline">Unsubscribe <span class="fw-b">anytime.</span></p>
+  </div>
+  <div class="subscribe__form">
+    <input type="text" class="subscribe__username" name="name" placeholder="Your name">
+    <div class="tooltip">Invalid name</div><br>
+    <input type="text" class="subscribe__email" name="email" placeholder="Your email">
+    <div class="tooltip">Invalid email</div><br>
+    <button type="button" class="subscribe__submit">
+      <div class="subscribe__submit__text">Gimme the Cuteness!</div>
+      <div class="subscribe__submit__loading">Creating your account...</div>
+    </button>
+    <div class="form-message"></div>
+  </div>
+</div>
+
+{{> footer }}
+
+{{> footer-bottom }}
+
+<script>
+  $(function() {
+    $('.subscribe__submit').on('click', function() {
+      var username = $('.subscribe__username').val();
+      var email = $('.subscribe__email').val();
+
+      $('.subscribe__submit + .form-message').text('').hide();
+      $('.subscribe__username')[username ? 'removeClass' : 'addClass']('input--invalid');
+      $('.subscribe__email')[email ? 'removeClass' : 'addClass']('input--invalid');
+
+      if(!email || !username) {
+        return;
+      }
+
+      $('.subscribe__submit').addClass('subscribe__submit--loading');
+
+      $.ajax({
+        method: 'POST',
+        url: '/user/subscribe',
+        data: {
+          name: username,
+          email: email
+        },
+        success: function(data) {
+          var message = data.data ? data.data.message : data.error;
+          $('.subscribe__submit + .form-message').text(message).show();
+          $('.subscribe__submit').removeClass('subscribe__submit--loading');
+        },
+        error: function(err) {
+          var error = err.error;
+          $('.subscribe__submit + .form-message').text(error).show();
+          $('.subscribe__submit').removeClass('subscribe__submit--loading');
+        }
+      })
+    })
+  })
+</script>
