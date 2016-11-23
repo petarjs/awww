@@ -382,14 +382,18 @@ input {
   100% { opacity: 0; transform: translateY(-200%); }
 }
 
-.btn5, .btn5:link, .btn5:visited {
+.btn-gelatine,
+.btn-gelatine:link,
+.btn-gelatine:visited {
   border: none;
   outline: none;
-  color: #fefefe;
-  background-color: #FF6478;
-  border-radius: 3px;
 }
-.btn5:hover, .btn5:focus, .btn5:link:hover, .btn5:link:focus, .btn5:visited:hover, .btn5:visited:focus {
+.btn-gelatine:hover,
+.btn-gelatine:focus,
+.btn-gelatine:link:hover,
+.btn-gelatine:link:focus,
+.btn-gelatine:visited:hover,
+.btn-gelatine:visited:focus {
   -webkit-transition-timing-function: cubic-bezier(0.6, 4, 0.3, 0.8);
           transition-timing-function: cubic-bezier(0.6, 4, 0.3, 0.8);
   -webkit-animation: gelatine 0.5s 1;
