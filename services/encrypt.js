@@ -1,5 +1,4 @@
-var config = require('../config');
-var key = config.secretKey;
+var key = process.env.SECRET_KEY;
 var encryptor = require('simple-encryptor')(key);
 
 module.exports = encryptor;

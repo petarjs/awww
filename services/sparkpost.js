@@ -1,6 +1,5 @@
-var config = require('../config');
 var SparkPost = require('sparkpost');
-var client = new SparkPost(config.sparkPost);
+var client = new SparkPost(process.env.SPARKPOST);
 var _ = require('lodash')
 
 exports.send = send;
@@ -8,7 +7,7 @@ exports.getList = getList;
 exports.addToList = addToList;
 
 function send(address, content) {
-  var from = content.from || config.email.from;
+  var from = content.from || process.env.EMAIL_FROM;
   
   if(!address) {
     throw Error('No address specified.')

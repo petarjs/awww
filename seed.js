@@ -1,7 +1,6 @@
-var config = require('./config');
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
-mongoose.connect(config.mongoDbUrl);
+mongoose.connect(process.env.MONGO_DB_URL);
 
 // var animalSeeder = require('./api/animal/animal.seed');
 // var cutenessSeeder = require('./api/cuteness/cuteness.seed');

@@ -1,6 +1,5 @@
 'use strict';
 
-var config = require('../../config')
 var hbs = require('express-handlebars').create();
 var moment = require('moment');
 var GreetingHelper = require('../../helpers/greeting-helper');
@@ -55,7 +54,7 @@ function subscribe(req, res) {
 
       return hbs.render('views/emails/confirm.hbs', {
         name: 'Petar',
-        link: config.domain + '/user/confirm?hash=' + hash
+        link: process.env.DOMAIN + '/user/confirm?hash=' + hash
       }).then(function(html) {
         return sparkpost
           .send(newUser.email, {
@@ -124,7 +123,7 @@ function confirm(req, res) {
     .then(function sendFirstCuteness(user) {
       return hbs.render('views/emails/daily-cuteness.hbs', {
         name: 'Petar',
-        link: config.domain + '/cuteness?hash=' + user.login
+        link: process.env.DOMAIN + '/cuteness?hash=' + user.login
       }).then(function(html) {
         return sparkpost
           .send(user.email, {

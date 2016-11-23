@@ -1,4 +1,5 @@
-var config = require('./config');
+require('dotenv').config()
+
 var express = require('express');
 var exphbs  = require('express-handlebars');
 var bodyParser = require('body-parser');
@@ -7,7 +8,7 @@ var getUserFromUrlHash = require('./middleware/getUserFromUrlHash');
 var GreetingHelper = require('./helpers/greeting-helper');
 mongoose.Promise = require('bluebird');
 
-mongoose.connect(config.mongoDbUrl);
+mongoose.connect(process.env.MONGO_DB_URL);
 
 var app = express();
 
@@ -35,7 +36,7 @@ app.get('/', function (req, res) {
 });
 
 
-var port = config.port || 3000;
+var port = process.env.PORT || 3000;
 
 app.listen(port);
 console.log('Awww.ooo listening on port ' + port + ' !');
