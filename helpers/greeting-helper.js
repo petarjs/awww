@@ -3,7 +3,7 @@ var _ = require('lodash');
 exports.getRandomGreeting = getRandomGreeting;
 
 var greetings = {};
-greetings.words1 = ['animal', 'creature', 'pet', 'cat', 'dog', 'fauna', 'mamal', 'zoological'];
+greetings.words1 = ['animal', 'creature', 'pet', 'cat', 'dog', 'fauna', 'panda', 'koala', 'kangaroo', 'zoological'];
 greetings.words2 = ['lover', 'connoisseur', 'appreciator', 'aficionado', 'fan', 'devotee', 'admirer', 'enthusiast', 'supporter'];
 
 function getRandomGreeting() {

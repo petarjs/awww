@@ -467,3 +467,45 @@ input {
   font-weight: 500;
   margin-top: 20px;
 }
+
+#kitty1,
+#kitty2,
+#dog1,
+#dog2 {
+  position: absolute;
+  opacity: 0.6;
+  transition: transform 0.3s ease-in-out, opacity 0.2s ease-in;
+  cursor: pointer;
+}
+
+#kitty1:hover,
+#kitty2:hover,
+#dog1:hover,
+#dog2:hover {
+  transform: rotate(0deg);
+  opacity: 1;
+}
+
+#kitty1 {
+  top: 400px;
+  left: 10%;
+  transform: rotate(-18deg);
+}
+
+#dog2 {
+  top: 400px;
+  right: 10%;
+  transform: rotate(7deg);
+}
+
+#kitty2 {
+  top: 800px;
+  right: 7%;
+  transform: rotate(-5deg);
+}
+
+#dog1 {
+  top: 800px;
+  left: 7%;
+  transform: rotate(4deg);
+}
