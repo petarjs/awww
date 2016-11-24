@@ -474,8 +474,13 @@ input {
 #dog2 {
   position: absolute;
   opacity: 0.6;
-  transition: transform 0.3s ease-in-out, opacity 0.2s ease-in;
+  transition: all 0.3s ease-in-out;
   cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  
 }
 
 #kitty1:hover,
@@ -490,22 +495,66 @@ input {
   top: 400px;
   left: 10%;
   transform: rotate(-18deg);
+  width: 295px;
+  height: 290px;
+}
+#kitty1.open {
+  opacity: 1;
+  left: 50%;
+  top: 50%;
+  width: 800px;
+  height: 786px;
+  transform: rotate(0deg) translateY(-50%) translateX(-50%);
+  z-index: 9999;
 }
 
 #dog2 {
   top: 400px;
   right: 10%;
   transform: rotate(7deg);
+  width: 349px;
+  height: 262px;
+}
+#dog2.open {
+  opacity: 1;
+  right: 50%;
+  top: 50%;
+  width: 800px;
+  height: 600px;
+  transform: rotate(0deg) translateY(-50%) translateX(50%);
+  z-index: 9999;
 }
 
 #kitty2 {
   top: 800px;
   right: 7%;
   transform: rotate(-5deg);
+  width: 365px;
+  height: 243px;
+}
+#kitty2.open {
+  opacity: 1;
+  right: 50%;
+  top: 50%;
+  width: 800px;
+  height: 532px;
+  transform: rotate(0deg) translateY(-50%) translateX(50%);
+  z-index: 9999;
 }
 
 #dog1 {
   top: 800px;
   left: 7%;
   transform: rotate(4deg);
+  width: 379px;
+  height: 253px;
+}
+#dog1.open {
+  opacity: 1;
+  left: 50%;
+  top: 50%;
+  width: 800px;
+  height: 534px;
+  transform: rotate(0deg) translateY(-50%) translateX(-50%);
+  z-index: 9999;
 }
