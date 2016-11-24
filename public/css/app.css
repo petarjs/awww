@@ -460,3 +460,10 @@ input {
     transform: scale(0.95, 1.05);
   }
 }
+
+.tagline__text--explain,
+.subscribe__header__tagline--explain {
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 20px;
+}
