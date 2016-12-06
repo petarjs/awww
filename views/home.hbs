@@ -45,9 +45,9 @@
     <div class="tooltip">Invalid name</div><br>
     <input type="text" class="subscribe__email" name="email" placeholder="Your email">
     <div class="tooltip">Invalid email</div><br>
-    <button type="button" class="subscribe__submit btn-gelatine">
-      <div class="subscribe__submit__text">Gimme the Cuteness!</div>
-      <div class="subscribe__submit__loading">Creating your account...</div>
+    <button type="button" class="subscribe__submit submit-button btn-gelatine">
+      <div class="submit-button__text">Gimme the Cuteness!</div>
+      <div class="submit-button__loading">Creating your account...</div>
     </button>
     <div class="form-message"></div>
   </div>
@@ -71,7 +71,7 @@
         return;
       }
 
-      $('.subscribe__submit').addClass('subscribe__submit--loading');
+      $('.submit-button').addClass('submit-button--loading');
 
       $.ajax({
         method: 'POST',
@@ -83,12 +83,12 @@
         success: function(data) {
           var message = data.data ? data.data.message : data.error;
           $('.subscribe__submit + .form-message').text(message).show();
-          $('.subscribe__submit').removeClass('subscribe__submit--loading');
+          $('.submit-button').removeClass('submit-button--loading');
         },
         error: function(err) {
           var error = err.error;
           $('.subscribe__submit + .form-message').text(error).show();
-          $('.subscribe__submit').removeClass('subscribe__submit--loading');
+          $('.submit-button').removeClass('submit-button--loading');
         }
       })
     })

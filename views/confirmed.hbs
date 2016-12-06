@@ -21,7 +21,11 @@
   <div class="section__control ta-c">
     <div class="section__control__label">Time of the day when we should email you:</div>
     <input type="time" id="clockpicker"><br>
-    <button class="button" id="save-preferences">Save</button>
+    <button class="button btn-gelatine save-preferences submit-button">
+      <div class="submit-button__text">Save</div>
+      <div class="submit-button__loading">Saving...</div>
+    </button>
+    <div class="form-message"></div>
   </div>
 </div>
 
@@ -40,10 +44,13 @@
         donetext: 'Okay!'
     });
 
-    $('#save-preferences').on('click', function() {
+    $('.save-preferences').on('click', function() {
       var localTime = $('#clockpicker').val();
 
+      $('.submit-button + .form-message').text('').hide();
+
       if(!localTime) {
+        $('.submit-button + .form-message').text('Gotta provide the time!').show();
         return;
       }
 
@@ -52,8 +59,11 @@
       var utcTime = moment().hours(hours).minutes(minutes).utc().format('HH:mm');
 
       if(!utcTime) {
+        $('.submit-button + .form-message').text('Please choose a valid time :)').show();
         return;
       }
+
+      $('.submit-button').addClass('submit-button--loading');
 
       $.ajax({
         method: 'POST',
@@ -61,6 +71,16 @@
         data: {
           time: utcTime,
           hash: hash
+        },
+        success: function(data) {
+          var message = data.data ? data.data.message : data.error;
+          $('.submit-button + .form-message').text(message).show();
+          $('.submit-button').removeClass('submit-button--loading');
+        },
+        error: function(err) {
+          var error = err.error;
+          $('.submit-button + .form-message').text(error).show();
+          $('.submit-button').removeClass('submit-button--loading');
         }
       });
     })

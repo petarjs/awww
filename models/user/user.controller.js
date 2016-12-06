@@ -97,14 +97,14 @@ function confirm(req, res) {
         throw Error('404')
       }
 
-      if(user.confirmed) {
-        res.render('already-confirmed', {
-          copyright: { year: new Date().getFullYear() },
-          greeting: GreetingHelper.getRandomGreeting(),
-          user: { name: user.name }
-        })
-        throw Error('already-confirmed')
-      }
+      // if(user.confirmed) {
+      //   res.render('already-confirmed', {
+      //     copyright: { year: new Date().getFullYear() },
+      //     greeting: GreetingHelper.getRandomGreeting(),
+      //     user: { name: user.name }
+      //   })
+      //   throw Error('already-confirmed')
+      // }
 
       return user;
     })
@@ -154,6 +154,11 @@ function setPreferences(req, res) {
   if(!payload.userId) {
     res.json(Response.error('Auth Error'));
     return;
+  }
+
+  if(!time) {
+    res.json(Response.error('Gotta provide the time!'));
+    throw Error('Time Missing Error');
   }
 
   User

@@ -223,23 +223,6 @@ input {
   border-radius: 100px;
 }
 
-.subscribe__submit {
-  padding: 10px 30px;
-  font-size: 18px;
-  border: 0;
-  background-color: #FF6478;
-  color: #FFFFFF;
-  border-radius: 100px;
-  font-weight: 300;
-  width: 100%;
-  max-width: 300px;
-  cursor: pointer;
-  outline: none;
-  overflow: hidden;
-  position: relative;
-  max-height: 40px;
-}
-
 .subscribe__form {
   text-align: center;
 }
@@ -293,26 +276,43 @@ input {
   margin-top: 10px;
 }
 
-.subscribe__submit--loading {}
+.submit-button {
+  padding: 10px 30px;
+  font-size: 18px;
+  border: 0;
+  background-color: #FF6478;
+  color: #FFFFFF;
+  border-radius: 100px;
+  font-weight: 300;
+  width: 100%;
+  max-width: 300px;
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+  position: relative;
+  max-height: 40px;
+}
 
-.subscribe__submit__text,
-.subscribe__submit__loading {
+.submit-button--loading {}
+
+.submit-button__text,
+.submit-button__loading {
   transition: all 0.2s ease-in-out;
 }
 
-.subscribe__submit__text {
+.submit-button__text {
   transform: translateY(0);
 }
 
-.subscribe__submit__loading {
+.submit-button__loading {
   transform: translateY(-300%);
 }
 
-.subscribe__submit--loading .subscribe__submit__text {
+.submit-button--loading .submit-button__text {
   transform: translateY(300%);
 }
 
-.subscribe__submit--loading .subscribe__submit__loading {
+.submit-button--loading .submit-button__loading {
   transform: translateY(-100%);
 }
 
