@@ -7,10 +7,14 @@ var mongoose   = require('mongoose');
 var getUserFromUrlHash = require('./middleware/getUserFromUrlHash');
 var GreetingHelper = require('./helpers/greeting-helper');
 mongoose.Promise = require('bluebird');
+var RateLimit = require('express-rate-limit');
+var helmet = require('helmet');
 
 mongoose.connect(process.env.MONGO_DB_URL);
 
 var app = express();
+
+app.enable('trust proxy');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -23,6 +27,13 @@ app.engine('.hbs', exphbs({
 }));
 
 app.set('view engine', '.hbs');
+
+app.use(helmet());
+app.use(new RateLimit({
+  windowMs: 60*1000,
+  max: 100,
+  delayMs: 0
+}));
 
 // app.use(getUserFromUrlHash);
 
