@@ -76,7 +76,7 @@ function subscribe(req, res) {
 
 function confirm(req, res) {
   var hash = req.query.hash;
-  var payload = encryptor.decrypt(hash.replace(' ', '+'));
+  var payload = encryptor.decrypt(hash.replace(/\s/g, '+'));
 
   if(!hash || !payload || !payload.userId) {
     res.render('error-404', {

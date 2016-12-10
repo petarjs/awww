@@ -1,0 +1,19 @@
+---
+Awww.ooo
+Hey, wanna get some cute animal photos in your inbox every day?
+
+- GitHub
+  https://github.com/petarjs/awww
+
+- Milestones
+  [MVP], [Phase 2], [Phase 3], [Phase 4]
+
+- Members
+  @petar
+---
+
+[MVP]
+  - [ ] #18 Fix mobile view for animal images on homepage
+    @petar #bug
+  - [ ] #17 Make images on Cuteness page dynamic
+    @petar #technical
